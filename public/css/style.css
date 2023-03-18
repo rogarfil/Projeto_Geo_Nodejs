@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-size: 14px;
+  line-height: 25px;
+  margin: 0px;
+  font-family: open sans, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #313131;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 45px;
+  margin: 0 0 5px;
+  line-height: 75px;
+}
+
+h4 {
+  font-weight: 500;
+  margin: 10px 0px 10px 0px;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.header {
+  margin: 120px;
+  text-align: center;
+}
+
+/**
+ * Header
+ */
+.nav {
+  height: 50px;
+  width: 100%;
+  background-color: #029847;
+  position: relative;
+}
+
+.nav>.nav-header {
+  display: inline;
+}
+
+.nav>.nav-header>.nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 3px 10px 10px 10px;
+}
+
+.nav>.nav-btn {
+  display: none;
+}
+
+.nav>.nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav>.nav-links>a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav>.nav-links>a:hover {
+  background-color: rgba(2, 152, 71, 0.3);
+}
+
+.nav>#nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav>.nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+
+  .nav>.nav-btn>label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+
+  .nav>.nav-btn>label:hover,
+  .nav #nav-check:checked~.nav-btn>label {
+    background-color: rgba(2, 152, 71, 0.3);
+  }
+
+  .nav>.nav-btn>label>span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+
+  .nav>.nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #029847;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+
+  .nav>.nav-links>a {
+    display: block;
+    width: 100%;
+  }
+
+  .nav>#nav-check:not(:checked)~.nav-links {
+    height: 0px;
+  }
+
+  .nav>#nav-check:checked~.nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+}
+
+/**
+   * Table
+   */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  color: #029847;
+  width: 100%;
+  text-align: center;
+}
+
+a {
+  color: #333;
+}
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+/*
+ * Footer
+ */
+footer {
+  border: 0.1rem #029847 solid;
+  border-left: 0;
+  border-right: 0;
+
+  text-align: center;
+  font-size: 1.3vw;
+
+  margin: 1vw 1.2vw;
+}
+
+.cells {
+  display: inline-block;
+  border-right: 1vh #029847 solid;
+
+  text-align: center;
+
+
+  padding: 0vw 0.5vw;
+  margin: 0.5vw;
+}
+
+p:last-child {
+  border-right: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*
+ * Botão para "Ver Detalhes"
+ */
+button {
+  background: #029847;
+  border-radius: 3px;
+  padding: 11px;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+}
+
+/*
+ * Botão finalizar "Compra"
+ */
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-group>button {
+  box-shadow: none;
+  border: 1px solid #cecece;
+  background: #ffffff;
+  color: #000;
+  padding: 10px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.buttonClicked {
+  background-color: #029847 !important;
+  color: #fff;
+}

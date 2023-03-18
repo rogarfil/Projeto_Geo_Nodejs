@@ -1,0 +1,38 @@
+<div class="header">
+    <div class="title">
+        <h1>Ordens de compras de sua carteira de clientes.</h1>
+    </div>
+    <div class="sub-title">
+        <h4>Esta página possui as seguintes informações: Propriedade, Produtor e Monitoramento.</h4>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Ação</th>
+                <th scope="col">Propriedade</th>
+                <th scope="col">Cadastro Rural</th>
+                <th scope="col">Produtor</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Data Monitoramento</th>
+                <th scope="col">Analista</th>
+                <th scope="col">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#data}}
+            <tr>
+                <td data-label="Acao">
+                    <a href="/select/{{idMonitoramento}}/{{idPropriedade}}"><button id="botao">Ver Detalhes</button></a>
+                </td>
+                <td data-label="Propriedade">{{nomePropriedade}}</td>
+                <td data-label="Cadastro Rural" id="quebra_num">{{numeroCadastroRural}}</td>
+                <td data-label="Produtor">{{nomeProdutor}}</td>
+                <td data-label="CPF">{{cpfProdutor}}</td>
+                <td data-label="Data Monitoramento">{{#formatDate dataMonitoramento}}{{/formatDate}}</td>
+                <td data-label="Analista">{{analista}}</td>
+                <td data-label="Resultado" id="result">{{resultado}}</td>
+            </tr>
+            {{/data}}
+        </tbody>
+    </table>
+</div>
