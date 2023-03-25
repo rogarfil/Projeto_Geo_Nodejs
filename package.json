@@ -1,7 +1,7 @@
 {
-  "name": "projetogeo",
-  "version": "1.0.0",
-  "description": "Projeto Geo - Lógica de programação e estrutura de código.",
+  "name": "work_projeto_geo_ii",
+  "version": "1.0.1",
+  "description": "Projeto Geo II - Lógica de programação e estrutura de código.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -15,8 +15,8 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
-    "express-handlebars": "^7.0.2",
+    "express-handlebars": "^7.0.4",
     "moment": "^2.29.4",
-    "mysql2": "^3.2.0"
+    "mysql": "^2.18.1"
   }
 }

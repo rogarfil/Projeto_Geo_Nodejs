@@ -1,19 +1,35 @@
-// Requisita o módulo express, body-parser, mysql instalado para que possa ser utilizado na aplicação
+//Constants
 const express = require('express');
-const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const Handlebars = require('handlebars');
+const bodyParser = require('body-parser');
+const http = require('http');
+const url = require('url');
 const moment = require('moment');
-const crud = require('crud');
-let cruds = new crud();
+const mysql = require('mysql');
 
-// Cria uma instância da aplicação/Express
+const server = http.createServer((req, res) => {
+    const urlObj = url.parse(req.url, true);
+    const idMonitoramento = urlObj.query.idMonitoramento;
+    const idPropriedade = urlObj.query.idPropriedade;
+})
+
+const connection = mysql.createConnection({
+    user: 'root',
+    password: '',
+    host: 'localhost',
+    database: 'geotecnologia'
+})
+
 const app = express();
-app.use('/css', express.static(__dirname + '/public/css'))
-app.use('/js', express.static(__dirname + '/public/js'))
-app.use('/img', express.static(__dirname + '/public/img'))
 
-// Define a extensão e a instância do Handlebars com o modelo que será interpretado o código
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/css', express.static(__dirname + '/public/css'));
+app.use('/js', express.static(__dirname + '/public/js'));
+app.use('/img', express.static(__dirname + '/public/img'));
+
+// Template engine
 app.engine('hbs', exphbs.engine({
     extname: '.hbs',
     helpers: {
@@ -22,22 +38,24 @@ app.engine('hbs', exphbs.engine({
         }
     }
 }));
-// Define qual o template a ser utilizado
 app.set('view engine', 'hbs');
 
-// Registra uma rota get(sinalizando leitura) apontando para a raiz '/'.
-// req: Request - Em resumo, corresponde as entradas, tudo aquilo que é enviado para o servidor 
-// res: Response - Corresponde as saídas, tudo aquilo que é desejado enviar para o exterior
-app.get('/', (req, res) => {
-    // Envia uma string de resposta para a requisição realizada
-    res.render('index');
-});
+// Routes and Templates
+app.get('/', (req, res) => { res.render('index'); })
 
-// Passar uma rota com parâmetros trabalhar com Banco de Dados
-app.get("/list", (req, res) => { cruds.read(req, res) });
-app.get("/select/:idMonitoramento/:idPropriedade", (req, res) => { cruds.upload(req, res) });
-
-// Inicializa o servidor observando a porta 3000
-app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000');
+app.get('/list', (req, res) => {
+    connection.query('SELECT m.idMonitoramento, m.dataMonitoramento, m.analista, m.resultado, pd.idprodutor, pd.nomeProdutor, pd.cpfProdutor, pr.idPropriedade, pr.nomePropriedade, pr.numeroCadastroRural FROM propriedades pr, vinculo v INNER JOIN monitoramentos m ON (v.idVinculo = m.idVinculo) INNER JOIN produtores pd ON (v.idProdutor = pd.idProdutor) order by nomePropriedade ASC', (err, results, fields) => {
+        res.render('list', { data: results });
+    })
 })
+
+app.get('/select/:idMonitoramento', (req, res) => {
+    connection.query('SELECT m.idMonitoramento, m.parecerAnalise, pd.idprodutor, pr.idPropriedade, pr.tipoPropriedade, v.idVinculo, v.tipoVinculoProdutor FROM propriedades pr, vinculo v INNER JOIN monitoramentos m ON (v.idVinculo = m.idVinculo) INNER JOIN produtores pd ON (v.idProdutor = pd.idProdutor) WHERE m.resultado = "Liberado" AND idMonitoramento=?', [req.params.idMonitoramento], (err, results, fields) => {
+        res.render('select', { idMonitoramento: req.params.idMonitoramento, data: results });
+    })
+})
+
+//Start server
+app.listen(3000, () => {
+    console.log('Server started on port 3000');
+});

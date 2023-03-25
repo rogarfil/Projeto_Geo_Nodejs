@@ -14,4 +14,14 @@ function removeStyles() {
   }
 }
 
-// Botão aparece
+/** Botão aparece
+const tdElements = document.querySelectorAll('td');
+
+tdElements.forEach(td => {
+  if (td.textContent === 'Liberado') {
+    const button = document.createElement('button');
+    button.textContent = 'Ver Detalhes'
+    td.parentElement.appendChild(button);
+  }
+});
+ */

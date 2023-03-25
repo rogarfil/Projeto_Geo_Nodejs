@@ -285,6 +285,13 @@ button {
   font-size: 12px;
 }
 
+.btn-styled {
+  font-size: 14px;
+  margin: 8px;
+  padding: 0 10px;
+  line-height: 2;
+}
+
 /*
  * Botão finalizar "Compra"
  */
@@ -306,5 +313,9 @@ button {
 
 .buttonClicked {
   background-color: #029847 !important;
+  color: #fff;
+}
+
+#botao {
   color: #fff;
 }

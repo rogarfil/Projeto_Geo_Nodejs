@@ -1,5 +1,3 @@
-# Work Projeto Geo
-
 ## PROCESSO SELETIVO - LÓGICA PROGRAMAÇÃO EM PRÁTICA
 ### Aplicação de teste sobre lógica de programação e estruturação de código.
 
@@ -54,3 +52,9 @@ ProjetoGeo
   * Na raiz do site temos a página server.js que é o core do nosso sistema.
   * Na pasta complement existem duas pastas importantes para o sistema, são:
     db, pasta que contem o arquivo do banco de dados geotecnologia.sql, e a pasta crud com o arquivo index.js que realiza o acesso ao Banco de Dados e manipula o SQL - create, edit, delete, update. Está pasta deve ser colocada na pasta node_modules, após as instalações dos módulos.
+
+    ### Observações:
+    1. No menu Monitoramento onde acessa o script list.hbs aparecem todos os registros com seus relacionamentos, na coluna Resultado onde temos a situação de BLOQUEADO, se utilizarmos o javascript.js onde está comentado '// Botão aparece' ele faz com que na situação de BLOQUEADO o botão Ver Detalhes não apareça, mas não resolvi o problema de link.
+    2. Ao clicar no botão Ver Detalhes deveriamos chamar duas (id) :idMonitoramento e :idPropriedade para buscarmos as informações que realmente desejamos, listado no script select.hbs onde tem um botão para realizar a compra que é ativado quando clicado.
+    3. Resumindo em Monitoramento aparecem todos os registros cadastrados e ao escolhermos qual queremos ver os detalhes para efetuar a compra se for BLOQUEADO abre o script vazio, mas se estiver Liberado esta mostrará todos os registros que tiverem o mesmo :idMonitoramento
+	4. Neste novo contexto não existe a pasta crud, todo o SQL está sendo executado no script server.js
