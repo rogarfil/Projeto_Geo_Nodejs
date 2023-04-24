@@ -10,7 +10,7 @@ Para o MySQL usamos o XAMPP que é um pacote de pilha de solução de servidor w
 
 Trabalhamos com HTML5, CSS3 e JS onde geramos através do comando npm init, o arquivo package.json, com as informações do Projeto e suas dependências.
 
-ProjetoGeo
+* ProjetoGeo
     node_modules
 	crud
     public
