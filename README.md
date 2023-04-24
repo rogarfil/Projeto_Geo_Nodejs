@@ -11,26 +11,29 @@ Para o MySQL usamos o XAMPP que é um pacote de pilha de solução de servidor w
 Trabalhamos com HTML5, CSS3 e JS onde geramos através do comando npm init, o arquivo package.json, com as informações do Projeto e suas dependências.
 
 ProjetoGeo
-  ├── node_modules*
-  ├    ├── crud
-  ├── public
-  ├    ├── css
-  ├    ├── img
-  ├    └── js  
-  ├── views
-  ├    ├── layouts
-  ├    ├    └── main.hbs
-  ├    ├── index.hbs
-  ├    |── list.hbs  
-  ├    └── select.hbs
-  ├── package-lock.json
-  ├── package.json
-  ├── server.js  
-  └── complement
-       ├── crud
-       ├    └── index.js
-       └── db
-            └── geotecnologia.sql
+    node_modules
+	crud
+    public
+	css
+	    style.css
+	img
+	    logo_globo.png
+	js
+	    javascript.js
+    views
+	layouts
+	    main.hbs
+      index.hbs
+      list.hbs  
+      select.hbs  
+    complement
+	crud
+	    index.js
+	db
+	    geotecnologia.sql
+      package-lock.json
+      package.json
+      server.js
 
   * node_modules: relação de pastas que são dependências do Projeto
       * módulos essenciais pro CRUD:
